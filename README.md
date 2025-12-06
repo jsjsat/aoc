@@ -9,7 +9,7 @@
     | |
 ```
 
-TypeScript solution server for [Advent of Code 2024](https://adventofcode.com/2024).
+TypeScript solution server for [Advent of Code](https://adventofcode.com). Supports multiple years!
 
 ## 🚀 Quick Start
 
@@ -18,15 +18,24 @@ npm install
 npm run dev
 ```
 
-Server runs at `http://localhost:3000`. Access solutions: `http://localhost:3000/1`, `http://localhost:3000/2`, etc.
+Server runs at `http://localhost:3000`
+
+## 🌟 Routes
+
+- `http://localhost:3000/:day` - Current year (defaults to 2025)
+- `http://localhost:3000/:year/:day` - Specific year and day
+- Examples:
+  - `http://localhost:3000/1` → 2025, Day 1
+  - `http://localhost:3000/2024/1` → 2024, Day 1
+  - `http://localhost:3000/2025/5` → 2025, Day 5
 
 ## ❄️ Adding a New Day
 
-1. Create `src/{day}/` folder
+1. Create `src/{year}/{day}/` folder
 2. Add `input.txt` and `solution.ts`:
 
 ```typescript
-import { Solution } from "../solution"
+import { Solution } from "../../solution"
 import { readFileSync } from 'fs';
 
 export const solution{day} : Solution = {
@@ -34,12 +43,12 @@ export const solution{day} : Solution = {
         return "1: " + this.compute1() + "\n2: " + this.compute2();
     },
     compute1(): string {
-        const file = readFileSync('./src/{day}/input.txt', 'utf-8');
+        const file = readFileSync('./src/{year}/{day}/input.txt', 'utf-8');
         // Part 1 solution
         return "result";
     },
     compute2(): string {
-        const file = readFileSync('./src/{day}/input.txt', 'utf-8');
+        const file = readFileSync('./src/{year}/{day}/input.txt', 'utf-8');
         // Part 2 solution
         return "result";
     }
