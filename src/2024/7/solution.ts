@@ -1,5 +1,5 @@
 import { Solution } from "../../solution"
-import { readFileSync } from 'fs';
+import { readInput } from "../../utils";
 
 export const solution7 : Solution = {
     compute(): string {
@@ -7,13 +7,13 @@ export const solution7 : Solution = {
     },
     
     compute1() {
-        const file = readFileSync('./src/2024/7/input.txt', 'utf-8');
+        const file = readInput(2024, 7);
         let equations = file.split("\n").slice(0, -1);
         return "" + equations.filter(eq => isValid1(eq)).map(eq => +eq.split(":")[0]).reduce((sum, current) => sum + current, 0);
     },
 
     compute2() {
-        const file = readFileSync('./src/2024/7/input.txt', 'utf-8');
+        const file = readInput(2024, 7);
         let equations = file.split("\n").slice(0, -1);
         return "" + equations.filter(eq => isValid2(eq)).map(eq => +eq.split(":")[0]).reduce((sum, current) => sum + current, 0);
     },

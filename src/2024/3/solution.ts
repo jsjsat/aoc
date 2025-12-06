@@ -1,5 +1,5 @@
 import { Solution } from "../../solution"
-import { readFileSync } from 'fs';
+import { readInput } from "../../utils";
 
 export const solution3 : Solution = {
     compute(): string {
@@ -7,7 +7,7 @@ export const solution3 : Solution = {
     },
     
     compute1() {
-        const file = readFileSync('./src/2024/3/input.txt', 'utf-8');
+        const file = readInput(2024, 3);
         const test = "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))";
         const regex = RegExp("mul\\\(\(\\d\{1,3}\),\(\\d\{1,3}\)\\\)","g");
         let result = 0;
@@ -27,7 +27,7 @@ export const solution3 : Solution = {
     },
 
     compute2() {
-        const file = readFileSync('./src/2024/3/input.txt', 'utf-8');
+        const file = readInput(2024, 3);
         const test = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))";
         const regex = RegExp("\(mul\\\(\(\\d\{1,3}\),\(\\d\{1,3}\)\\\)\)\|do\\\(\\\)\|don\\'t\\\(\\\)","g");
         let result = 0;

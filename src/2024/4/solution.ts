@@ -1,5 +1,5 @@
 import { Solution } from "../../solution"
-import { readFileSync } from 'fs';
+import { readInput } from "../../utils";
 
 export const solution4 : Solution = {
     compute(): string {
@@ -7,7 +7,7 @@ export const solution4 : Solution = {
     },
     
     compute1() {
-        const file = readFileSync('./src/2024/4/input.txt', 'utf-8');
+        const file = readInput(2024, 4);
         let lines = file.split("\n").slice(0, -1);
         let result = 0;
         for (let i = 0; i < lines.length; i++) {
@@ -24,7 +24,7 @@ export const solution4 : Solution = {
     },
 
     compute2() {
-        const file = readFileSync('./src/2024/4/input.txt', 'utf-8');
+        const file = readInput(2024, 4);
         let lines = file.split("\n").slice(0, -1);
         let result = 0;
         for (let i = 0; i < lines.length; i++) {

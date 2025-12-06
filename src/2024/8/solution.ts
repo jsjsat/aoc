@@ -1,5 +1,5 @@
 import { Solution } from "../../solution"
-import { readFileSync } from 'fs';
+import { readInput } from "../../utils";
 
 export const solution8 : Solution = {
     compute(): string {
@@ -7,7 +7,7 @@ export const solution8 : Solution = {
     },
     
     compute1() {
-        const file = readFileSync('./src/2024/8/input.txt', 'utf-8');
+        const file = readInput(2024, 8);
         let lines = file.split("\n").slice(0, -1);
         const resultSet = new Set<string>();
         let nodeMap: Map<string, number[][]> = buildNodeMap(lines);
@@ -22,7 +22,7 @@ export const solution8 : Solution = {
     },
 
     compute2() {
-        const file = readFileSync('./src/2024/8/input.txt', 'utf-8');
+        const file = readInput(2024, 8);
         let lines = file.split("\n").slice(0, -1);
         const resultSet = new Set<string>();
         let nodeMap: Map<string, number[][]> = buildNodeMap(lines);

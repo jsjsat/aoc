@@ -1,5 +1,5 @@
 import { Solution } from "../../solution"
-import { readFileSync } from 'fs';
+import { readInput } from "../../utils";
 
 export const solution15 : Solution = {
     compute(): string {
@@ -7,7 +7,7 @@ export const solution15 : Solution = {
     },
     
     compute1() {
-        let lines = readFileSync('./src/2024/15/input.txt', 'utf-8').split("\n").slice(0, -1);
+        let lines = readInput(2024, 15).split("\n").slice(0, -1);
         let map: string[][] = lines.filter(line => line[0] ==="#").map(line => line.split(""));
         let moves: string = lines.filter(line => line.startsWith("<") || line.startsWith("^") || line.startsWith(">") || line.startsWith("v")).join("");
         let robot: Robot = findRobot(map);
@@ -29,7 +29,7 @@ export const solution15 : Solution = {
     },
 
     compute2() {
-        let lines = readFileSync('./src/2024/15/input.txt', 'utf-8').split("\n").slice(0, -1);
+        let lines = readInput(2024, 15).split("\n").slice(0, -1);
         let map: string[][] = lines.filter(line => line[0] ==="#").map(line => convertLine(line)).map(line => line.split(""));
         let moves = lines.filter(line => line.startsWith("<") || line.startsWith("^") || line.startsWith(">") || line.startsWith("v")).join("");
         let fieldMap = convertMap(map);

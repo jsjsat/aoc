@@ -1,5 +1,5 @@
 import { Solution } from "../../solution"
-import { readFileSync } from 'fs';
+import { readInput } from "../../utils";
 
 export const solution11 : Solution = {
     compute(): string {
@@ -8,7 +8,7 @@ export const solution11 : Solution = {
     
     compute1() {
         const blinks = 25;
-        let stones = readFileSync('./src/2024/11/input.txt', 'utf-8').split("\n")[0].split(" ").map(Number);
+        let stones = readInput(2024, 11).split("\n")[0].split(" ").map(Number);
 
         for(let j = 1; j <= blinks; j++) {
             let newStones: number[] = [];
@@ -26,7 +26,7 @@ export const solution11 : Solution = {
     compute2() {
         const blinks = 75;
         let cache = new Map<string, number>();
-        let stones = readFileSync('./src/2024/11/input.txt', 'utf-8').split("\n")[0].split(" ").map(Number);
+        let stones = readInput(2024, 11).split("\n")[0].split(" ").map(Number);
 
         return "" + stones.map(stone => count(stone, blinks, cache)).reduce((agg, cur) => agg + cur, 0);
     },

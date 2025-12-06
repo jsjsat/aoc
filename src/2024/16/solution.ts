@@ -1,5 +1,5 @@
 import { Solution } from "../../solution"
-import { readFileSync } from 'fs';
+import { readInput } from "../../utils";
 
 export const solution16 : Solution = {
     compute(): string {
@@ -7,14 +7,14 @@ export const solution16 : Solution = {
     },
     
     compute1() {
-        let lines = readFileSync('./src/2024/16/input.txt', 'utf-8').split("\n").slice(0, -1);
+        let lines = readInput(2024, 16).split("\n").slice(0, -1);
         let nodes: Map<string, Node> = getNodes(lines);
         let path = findBestPaths(nodes)[0];
         return "" + path.steps; 
     },
 
     compute2() {
-        let lines = readFileSync('./src/2024/16/input.txt', 'utf-8').split("\n").slice(0, -1);
+        let lines = readInput(2024, 16).split("\n").slice(0, -1);
         let nodes: Map<string, Node> = getNodes(lines);
         let bestPaths = findBestPaths(nodes);
         let fields = new Set<string>(bestPaths.map(path => path.path).flat());

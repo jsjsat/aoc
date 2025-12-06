@@ -1,5 +1,5 @@
 import { Solution } from "../../solution"
-import { readFileSync } from 'fs';
+import { readInput } from "../../utils";
 
 export const solution1 : Solution = {
     compute(): string {
@@ -7,13 +7,13 @@ export const solution1 : Solution = {
     },
     
     compute1(): string {
-        const file = readFileSync('./src/2025/1/input.txt', 'utf-8');
+        const file = readInput(2025, 1);
         // TODO: Implement Part 1 solution
         return "Not implemented yet";
     },
 
     compute2(): string {
-        const file = readFileSync('./src/2025/1/input.txt', 'utf-8');
+        const file = readInput(2025, 1);
         // TODO: Implement Part 2 solution
         return "Not implemented yet";
     }

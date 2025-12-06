@@ -1,5 +1,5 @@
 import { Solution } from "../../solution"
-import { readFileSync } from 'fs';
+import { readInput } from "../../utils";
 
 export const solution14 : Solution = {
     compute(): string {
@@ -10,7 +10,7 @@ export const solution14 : Solution = {
         const seconds = 100;
         const height = 103;
         const width = 101;
-        let robots = readFileSync('./src/2024/14/input.txt', 'utf-8').split("\n").slice(0, -1).map(line => new Robot(line));
+        let robots = readInput(2024, 14).split("\n").slice(0, -1).map(line => new Robot(line));
         robots.forEach(robot => robot.simulate(seconds, width, height));
         let q1 = robots.filter(robot => filterQ(robot, 1, width, height)).length;
         let q2 = robots.filter(robot => filterQ(robot, 2, width, height)).length;
@@ -24,7 +24,7 @@ export const solution14 : Solution = {
        compute2() {
         const height = 103;
         const width = 101;
-        let robots = readFileSync('./src/2024/14/input.txt', 'utf-8').split("\n").slice(0, -1).map(line => new Robot(line));
+        let robots = readInput(2024, 14).split("\n").slice(0, -1).map(line => new Robot(line));
         let i = 1;
         while(i < 100000) {
             robots.forEach(robot => robot.simulate(1, width, height));
