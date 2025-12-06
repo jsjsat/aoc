@@ -1,12 +1,17 @@
-# 🎄 Advent of Code 2024
+# 🎄 Advent of Code Solutions
 
 ```
-    ✨
-   /o\
-  /o o\
- /o o o\
-/o o o o\
-    | |
+          \|/
+         --*--
+          /|\
+          >o<
+         >@>O<
+        >o>O>o<
+       >@>o>@>O<
+      >O>o>@>o>O<
+     >o>@>O>o>@>o<
+          | |
+          | |
 ```
 
 TypeScript solution server for [Advent of Code](https://adventofcode.com). Supports multiple years!
@@ -24,10 +29,11 @@ Server runs at `http://localhost:3000`
 
 - `http://localhost:3000/:day` - Current year (defaults to 2025)
 - `http://localhost:3000/:year/:day` - Specific year and day
-- Examples:
-  - `http://localhost:3000/1` → 2025, Day 1
-  - `http://localhost:3000/2024/1` → 2024, Day 1
-  - `http://localhost:3000/2025/5` → 2025, Day 5
+
+**Examples:**
+- `http://localhost:3000/1` → Current year, Day 1
+- `http://localhost:3000/2024/1` → 2024, Day 1
+- `http://localhost:3000/2025/5` → 2025, Day 5
 
 ## ❄️ Adding a New Day
 
@@ -35,7 +41,7 @@ Server runs at `http://localhost:3000`
 2. Add `input.txt` and `solution.ts`:
 
 ```typescript
-import { Solution } from "../../solution"
+import { Solution } from "../../types"
 import { readInput } from "../../utils";
 
 export default {
@@ -62,6 +68,8 @@ That's it! Dynamic loading handles the rest. 🎉
 - `npm run dev` - Development server with hot reload
 - `npm run build` - Compile TypeScript
 - `npm start` - Run compiled code
+- `npm test` - Run tests
+- `npm run test:watch` - Run tests in watch mode
 
 ---
 
