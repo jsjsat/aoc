@@ -1,4 +1,4 @@
-import { Solution } from "./solution";
+import { Solution } from "./types";
 
 export default async function getSolution(year: string, day: string): Promise<Solution | undefined> {
     try {
@@ -16,9 +16,8 @@ export default async function getSolution(year: string, day: string): Promise<So
 
         // Dynamically import the solution
         const module = await import(`./${year}/${day}/solution`);
-        const solutionKey = `solution${day}`;
         
-        return module[solutionKey] as Solution;
+        return module.default as Solution;
     } catch (error) {
         console.error(`Error loading solution for year ${year}, day ${day}:`, error);
         return undefined;

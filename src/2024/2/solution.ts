@@ -1,7 +1,7 @@
-import { Solution } from "../../solution"
+import { Solution } from "../../types"
 import { readInput } from "../../utils";
 
-export const solution2 : Solution = {
+export default {
     compute(): string {
         return "1:" + this.compute1() + "\n" + "2:" + this.compute2();
     },

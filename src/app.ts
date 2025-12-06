@@ -1,6 +1,6 @@
 import express from 'express';
-import { Solution } from './solution';
-import getSolution from './solutionindex';
+import { Solution } from './types';
+import getSolution from './solutionLoader';
 
 const app = express();
 

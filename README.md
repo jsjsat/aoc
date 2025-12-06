@@ -36,23 +36,23 @@ Server runs at `http://localhost:3000`
 
 ```typescript
 import { Solution } from "../../solution"
-import { readFileSync } from 'fs';
+import { readInput } from "../../utils";
 
-export const solution{day} : Solution = {
+export default {
     compute(): string {
         return "1: " + this.compute1() + "\n2: " + this.compute2();
     },
     compute1(): string {
-        const file = readFileSync('./src/{year}/{day}/input.txt', 'utf-8');
+        const file = readInput({year}, {day});
         // Part 1 solution
         return "result";
     },
     compute2(): string {
-        const file = readFileSync('./src/{year}/{day}/input.txt', 'utf-8');
+        const file = readInput({year}, {day});
         // Part 2 solution
         return "result";
     }
-}
+} satisfies Solution;
 ```
 
 That's it! Dynamic loading handles the rest. 🎉

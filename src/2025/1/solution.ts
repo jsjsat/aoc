@@ -1,7 +1,7 @@
-import { Solution } from "../../solution"
+import { Solution } from "../../types"
 import { readInput } from "../../utils";
 
-export const solution1 : Solution = {
+export default {
     compute(): string {
         return "1: " + this.compute1() + "\n2: " + this.compute2();
     },
@@ -17,4 +17,4 @@ export const solution1 : Solution = {
         // TODO: Implement Part 2 solution
         return "Not implemented yet";
     }
-}
+} satisfies Solution;
