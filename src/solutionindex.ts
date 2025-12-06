@@ -1,40 +1,30 @@
-import { solution1 } from "./1/solution"
-import { solution10 } from "./10/solution";
-import { solution11 } from "./11/solution";
-import { solution12 } from "./12/solution";
-import { solution13 } from "./13/solution";
-import { solution14 } from "./14/solution";
-import { solution15 } from "./15/solution";
-import { solution16 } from "./16/solution";
-import { solution2 } from "./2/solution";
-import { solution3 } from "./3/solution";
-import { solution4 } from "./4/solution";
-import { solution5 } from "./5/solution";
-import { solution6 } from "./6/solution";
-import { solution7 } from "./7/solution";
-import { solution8 } from "./8/solution";
-import { solution9 } from "./9/solution";
 import { Solution } from "./solution";
+import * as path from "path";
+import * as fs from "fs";
 
-export default function getSolution(id: string) : Solution | undefined {
-    switch(id) {
-        case "1": return solution1;
-        case "2": return solution2;
-        case "3": return solution3;
-        case "4": return solution4;
-        case "5": return solution5;
-        case "6": return solution6;
-        case "7": return solution7;
-        case "8": return solution8;
-        case "9": return solution9;
-        case "10": return solution10;
-        case "11": return solution11;
-        case "12": return solution12;
-        case "13": return solution13;
-        case "14": return solution14;
-        case "15": return solution15;
-        case "16": return solution16;
+export default async function getSolution(id: string): Promise<Solution | undefined> {
+    try {
+        // Validate the day number
+        const dayNum = parseInt(id, 10);
+        if (isNaN(dayNum) || dayNum < 1 || dayNum > 25) {
+            return undefined;
+        }
+
+        // Check if the solution folder exists (check for .ts in dev, .js in prod)
+        const tsPath = path.join(__dirname, id, 'solution.ts');
+        const jsPath = path.join(__dirname, id, 'solution.js');
         
-        default: return undefined;
+        if (!fs.existsSync(tsPath) && !fs.existsSync(jsPath)) {
+            return undefined;
+        }
+
+        // Dynamically import the solution
+        const module = await import(`./${id}/solution`);
+        const solutionKey = `solution${id}`;
+        
+        return module[solutionKey] as Solution;
+    } catch (error) {
+        console.error(`Error loading solution for day ${id}:`, error);
+        return undefined;
     }
 }

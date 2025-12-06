@@ -6,8 +6,12 @@ const app = express();
 
 app.get('/:id', async (req, res) => {
   let id = req.params.id;
-  let solution = getSolution(id);
-  res.send("<p style='font-family:monospace'>" + solution?.compute() + "</p>");
+  let solution = await getSolution(id);
+  if (!solution) {
+    res.status(404).send("<p style='font-family:monospace'>Solution not found for day " + id + "</p>");
+    return;
+  }
+  res.send("<p style='font-family:monospace'>" + solution.compute() + "</p>");
 });
 
 app.listen(3000, () => {
