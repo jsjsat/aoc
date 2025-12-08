@@ -1,79 +1,63 @@
 export class SolutionRenderer {
+  renderIndex(solutions: { year: number; day: number }[]): string {
+    // Sort by year (descending) then by day (ascending)
+    const sorted = solutions.sort((a, b) => {
+      if (b.year !== a.year) return b.year - a.year;
+      return a.day - b.day;
+    });
+
+    // Group by year
+    const byYear = sorted.reduce((acc, sol) => {
+      if (!acc[sol.year]) acc[sol.year] = [];
+      acc[sol.year].push(sol.day);
+      return acc;
+    }, {} as Record<number, number[]>);
+
+    const yearSections = Object.entries(byYear)
+      .sort(([yearA], [yearB]) => parseInt(yearB) - parseInt(yearA))
+      .map(([year, days]) => {
+        const dayLinks = days
+          .map(
+            (day) =>
+              `<a href="/${year}/${day}" class="day-link">Day ${day}</a>`
+          )
+          .join("");
+        return `
+          <div class="year-section">
+            <h2 class="year-title">🎄 ${year} 🎄</h2>
+            <div class="day-grid">${dayLinks}</div>
+          </div>
+        `;
+      })
+      .join("");
+
+    return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Advent of Code Solutions</title>
+      <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+      <div class="container">
+        <div class="tree">🎄</div>
+        <h1>Advent of Code Solutions</h1>
+        ${yearSections}
+        <div class="tree">🎄</div>
+        <div class="footer">Made by <a href="https://github.com/jsjsat/aoc" target="_blank">js</a></div>
+      </div>
+    </body>
+    </html>
+  `;
+  }
+
   render(year: string, day: string, part1: string, part2: string): string {
     return `
     <!DOCTYPE html>
     <html>
     <head>
       <title>AoC ${year} Day ${day}</title>
-      <style>
-        body {
-          font-family: 'Courier New', monospace;
-          background: linear-gradient(135deg, #1e3a5f 0%, #0d1b2a 100%);
-          color: #e8f4f8;
-          padding: 40px;
-          margin: 0;
-          min-height: 100vh;
-        }
-        .container {
-          max-width: 800px;
-          margin: 0 auto;
-        }
-        h1 {
-          text-align: center;
-          color: #ffd700;
-          text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-          margin-bottom: 40px;
-          font-size: 2.5em;
-        }
-        .solution-box {
-          background: rgba(255, 255, 255, 0.1);
-          border: 2px solid #00ff88;
-          border-radius: 12px;
-          padding: 25px;
-          margin-bottom: 20px;
-          box-shadow: 0 4px 6px rgba(0,0,0,0.3), 0 0 20px rgba(0,255,136,0.2);
-          transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .solution-box:hover {
-          transform: translateY(-1px);
-          box-shadow: 0 5px 7px rgba(0,0,0,0.35), 0 0 25px rgba(0,255,136,0.25);
-        }
-        .part-label {
-          color: #ff8c42;
-          font-weight: 700;
-          font-size: 1.3em;
-          margin-bottom: 10px;
-        }
-        .result {
-          color: #00ff88;
-          font-size: 2em;
-          font-weight: bold;
-          text-shadow: 0 0 10px rgba(0,255,136,0.5);
-        }
-        .star {
-          color: #ffd700;
-          margin-right: 10px;
-        }
-        .tree {
-          text-align: center;
-          font-size: 2.5em;
-          margin: 20px 0;
-        }
-        .footer {
-          text-align: center;
-          color: #ff8c42;
-          font-weight: 700;
-          font-size: 0.9em;
-          margin-top: 10px;
-        }
-        .footer a {
-          color: #ff8c42;
-          text-decoration: underline;
-        }
-        .footer a:hover {
-          text-decoration: none;
-        }
-      </style>
+      <link rel="stylesheet" href="/styles.css">
     </head>
     <body>
       <div class="container">
