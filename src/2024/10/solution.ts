@@ -2,10 +2,6 @@ import { Solution } from "../../types"
 import { readInput } from "../../utils";
 
 export default {
-    compute(): string {
-        return this.compute1() + " </br> " + this.compute2();
-    },
-    
     compute1() {
         const rows = readInput(2024, 10).split("\n").slice(0, -1);
         let result = 0;

@@ -2,10 +2,6 @@ import { Solution } from "../../types"
 import { readInput } from "../../utils";
 
 export default {
-    compute(): string {
-        return "</br>" +  this.compute2();
-    },
-    
     compute1() {
         let lines = readInput(2024, 16).split("\n").slice(0, -1);
         let nodes: Map<string, Node> = getNodes(lines);

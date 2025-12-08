@@ -2,10 +2,6 @@ import { Solution } from "../../types"
 import { readInput } from "../../utils";
 
 export default {
-    compute(): string {
-        return this.compute1() + "</br> " + this.compute2();
-    },
-    
     compute1() {
         const seconds = 100;
         const height = 103;

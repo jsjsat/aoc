@@ -2,10 +2,6 @@ import { Solution } from "../../types"
 import { readInput } from "../../utils";
 
 export default {
-    compute(): string {
-        return "1:" + this.compute1()  + "\n" + "2:" + this.compute2();
-    },
-    
     compute1() {
         const file = readInput(2024, 8);
         let lines = file.split("\n").slice(0, -1);

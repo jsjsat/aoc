@@ -2,10 +2,6 @@ import { Solution } from "../../types"
 import { readInput } from "../../utils";
 
 export default {
-    compute(): string {
-        return this.compute1() + " </br> " + this.compute2();
-    },
-    
     compute1() {
         let lines = readInput(2024, 12).split("\n").slice(0, -1);
         let garden = new Map<string, Set<Plot>>();

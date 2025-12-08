@@ -2,10 +2,6 @@ import { Solution } from "../../types"
 import { readInput } from "../../utils";
 
 export default {
-    compute(): string {
-        return this.compute1() + " </br> " + this.compute2();
-    },
-    
     compute1() {
         const blinks = 25;
         let stones = readInput(2024, 11).split("\n")[0].split(" ").map(Number);

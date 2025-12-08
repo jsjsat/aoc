@@ -2,10 +2,6 @@ import { Solution } from "../../types"
 import { readInput } from "../../utils";
 
 export default {
-    compute(): string {
-        return "1:" + this.compute1() + "\n" + "2:" + this.compute2();
-    },
-    
     compute1() {
         const file = readInput(2024, 3);
         const test = "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))";

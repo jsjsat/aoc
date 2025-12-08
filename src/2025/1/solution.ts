@@ -2,10 +2,6 @@ import { Solution } from "../../types"
 import { parseLines, readInput } from "../../utils";
 
 export default {
-    compute(): string {
-        return "1: " + this.compute1() + "\n2: " + this.compute2();
-    },
-    
     compute1(): string {
         const file = readInput(2025, 1);
         const lines = parseLines(file);

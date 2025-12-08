@@ -1,18 +1,22 @@
 import express from 'express';
 import { Solution } from './types';
 import getSolution from './solutionLoader';
+import { SolutionRenderer } from './solutionRenderer';
 
 const app = express();
+const renderer = new SolutionRenderer();
 
 // Route with year and day: /:year/:day
 app.get('/:year/:day', async (req, res) => {
   const { year, day } = req.params;
   let solution = await getSolution(year, day);
   if (!solution) {
-    res.status(404).send("<p style='font-family:monospace'>Solution not found for year " + year + ", day " + day + "</p>");
+    res.status(404).send(renderer.renderNotFound(year, day));
     return;
   }
-  res.send("<p style='font-family:monospace'>" + solution.compute() + "</p>");
+  const part1 = solution.compute1();
+  const part2 = solution.compute2();
+  res.send(renderer.render(year, day, part1, part2));
 });
 
 // Route with only day (defaults to current year 2025)
@@ -21,10 +25,12 @@ app.get('/:day', async (req, res) => {
   const currentYear = new Date().getFullYear().toString();
   let solution = await getSolution(currentYear, day);
   if (!solution) {
-    res.status(404).send("<p style='font-family:monospace'>Solution not found for day " + day + " (year " + currentYear + ")</p>");
+    res.status(404).send(renderer.renderNotFound(currentYear, day));
     return;
   }
-  res.send("<p style='font-family:monospace'>" + solution.compute() + "</p>");
+  const part1 = solution.compute1();
+  const part2 = solution.compute2();
+  res.send(renderer.render(currentYear, day, part1, part2));
 });
 
 app.listen(3000, () => {

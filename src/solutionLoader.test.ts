@@ -4,7 +4,6 @@ describe('Solution Loader', () => {
     test('should load valid 2024 day 1 solution', async () => {
         const solution = await getSolution('2024', '1');
         expect(solution).toBeDefined();
-        expect(solution?.compute).toBeDefined();
         expect(solution?.compute1).toBeDefined();
         expect(solution?.compute2).toBeDefined();
     });
@@ -34,10 +33,13 @@ describe('Solution Loader', () => {
         expect(solution).toBeUndefined();
     });
 
-    test('solution output should contain part labels', async () => {
+    test('solution should return numeric results', async () => {
         const solution = await getSolution('2024', '1');
-        const result = solution?.compute();
-        expect(result).toContain('1:');
-        expect(result).toContain('2:');
+        const result1 = solution?.compute1();
+        const result2 = solution?.compute2();
+        expect(result1).toBeDefined();
+        expect(result2).toBeDefined();
+        expect(typeof result1).toBe('string');
+        expect(typeof result2).toBe('string');
     });
 });
