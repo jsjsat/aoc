@@ -70,8 +70,11 @@ export class SolutionRenderer {
           <div class="part-label"><span class="star">⭐⭐</span>Part 2</div>
           <div class="result">${part2}</div>
         </div>
+        
+        <div><a href="/" class="back-button">← Back to Index</a></div>
         <div class="tree">🎄</div>
-        <div class="footer">Made by <a href="https://github.com/jsjsat/aoc" target="_blank">js</a></div>
+        <div class="footer">
+          Made by <a href="https://github.com/jsjsat/aoc" target="_blank">js</a></div>
       </div>
     </body>
     </html>
