@@ -12,7 +12,7 @@ export function readInput(year: number, day: number): string {
  * Split input into lines and filter out empty lines
  */
 export function parseLines(input: string): string[] {
-    return input.split('\n').filter(line => line.trim() !== '');
+    return input.split('\n').map(line => line.trim()).filter(line => line !== '');
 }
 
 /**
