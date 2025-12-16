@@ -1,4 +1,4 @@
 export interface Solution {
-    compute1(): string;
-    compute2(): string;
+  compute1(): string;
+  compute2(): string;
 }

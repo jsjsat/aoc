@@ -15,16 +15,16 @@ app.use('/styles.css', express.static(path.join(__dirname, 'styles.css')));
 function discoverSolutions(): { year: number; day: number }[] {
   const srcPath = path.join(__dirname);
   const solutions: { year: number; day: number }[] = [];
-  
+
   // Look for year folders (2024, 2025, etc.)
   const entries = readdirSync(srcPath, { withFileTypes: true });
-  
+
   for (const entry of entries) {
     if (entry.isDirectory() && /^\d{4}$/.test(entry.name)) {
       const year = parseInt(entry.name);
       const yearPath = path.join(srcPath, entry.name);
       const dayEntries = readdirSync(yearPath, { withFileTypes: true });
-      
+
       for (const dayEntry of dayEntries) {
         if (dayEntry.isDirectory() && /^\d+$/.test(dayEntry.name)) {
           const day = parseInt(dayEntry.name);
@@ -36,7 +36,7 @@ function discoverSolutions(): { year: number; day: number }[] {
       }
     }
   }
-  
+
   return solutions;
 }
 

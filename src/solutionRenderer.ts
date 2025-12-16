@@ -7,21 +7,21 @@ export class SolutionRenderer {
     });
 
     // Group by year
-    const byYear = sorted.reduce((acc, sol) => {
-      if (!acc[sol.year]) acc[sol.year] = [];
-      acc[sol.year].push(sol.day);
-      return acc;
-    }, {} as Record<number, number[]>);
+    const byYear = sorted.reduce(
+      (acc, sol) => {
+        if (!acc[sol.year]) acc[sol.year] = [];
+        acc[sol.year].push(sol.day);
+        return acc;
+      },
+      {} as Record<number, number[]>
+    );
 
     const yearSections = Object.entries(byYear)
       .sort(([yearA], [yearB]) => parseInt(yearB) - parseInt(yearA))
       .map(([year, days]) => {
         const dayLinks = days
-          .map(
-            (day) =>
-              `<a href="/${year}/${day}" class="day-link">Day ${day}</a>`
-          )
-          .join("");
+          .map(day => `<a href="/${year}/${day}" class="day-link">Day ${day}</a>`)
+          .join('');
         return `
           <div class="year-section">
             <h2 class="year-title">🎄 ${year} 🎄</h2>
@@ -29,7 +29,7 @@ export class SolutionRenderer {
           </div>
         `;
       })
-      .join("");
+      .join('');
 
     return `
     <!DOCTYPE html>

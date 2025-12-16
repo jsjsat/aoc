@@ -1,4 +1,4 @@
-import { readInput, parseLines } from "../../utils";
+import { readInput, parseLines } from '../../utils';
 
 const input = readInput(2025, 4);
 
@@ -31,7 +31,7 @@ const solution = {
 
     while (rollsRemoved) {
       rollsRemoved = false;
-      
+
       for (let r = 0; r < lines.length; r++) {
         for (let c = 0; c < lines[0].length; c++) {
           if (lines[r][c] === ROLL) {
@@ -52,10 +52,16 @@ const solution = {
 
 function countAdjacentRolls(grid: string[], row: number, col: number): number {
   const directions = [
-    [-1, 0], [1, 0], [0, -1], [0, 1],
-    [-1, -1], [-1, 1], [1, -1], [1, 1]
+    [-1, 0],
+    [1, 0],
+    [0, -1],
+    [0, 1],
+    [-1, -1],
+    [-1, 1],
+    [1, -1],
+    [1, 1],
   ];
-  
+
   let count = 0;
   for (const [dr, dc] of directions) {
     const newRow = row + dr;
@@ -66,7 +72,7 @@ function countAdjacentRolls(grid: string[], row: number, col: number): number {
       }
     }
   }
-  
+
   return count;
 }
 
